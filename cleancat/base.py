@@ -70,7 +70,7 @@ class Field:
                 allowed_types_text = " or ".join(allowed_types)
             else:
                 allowed_types_text = self.base_type.__name__
-            err_msg = "Value must be of %s type." % allowed_types_text
+            err_msg = "The value must be of %s type." % allowed_types_text
             raise ValidationError(err_msg)
 
         if not self.has_value(value):
@@ -622,7 +622,7 @@ class Choices(Field):
             choices = {choice.lower(): choice for choice in choices}
 
             if not isinstance(value, str):
-                raise ValidationError("Value needs to be a string.")
+                raise ValidationError("The value needs to be a string.")
 
             if value.lower() not in choices:
                 err_msg = self.format_invalid_choice_msg(value)
@@ -847,7 +847,7 @@ class Schema:
                             )
 
                         if value != old_value:
-                            raise ValidationError("Value cannot be changed.")
+                            raise ValidationError("The value cannot be changed.")
 
                     self.data[field_name] = value
 
